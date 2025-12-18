@@ -1,0 +1,46 @@
+<%- include('partials/header', { title: 'About Us' , page: '' }) %>
+
+    <main>
+        <section class="hero" style="background: var(--light-bg); padding: 4rem 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">Our Story</h1>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--light-text);">Spreading joy and creativity
+                    since 2024.</p>
+            </div>
+        </section>
+
+        <section class="about-content" style="padding: 5rem 0;">
+            <div class="container">
+                <div style="display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80"
+                            alt="Our Shop" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow-lg);">
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">More Than Just a Shop</h2>
+                        <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-color);">Founded in 2024,
+                            HappyShop started with a simple mission: to bring joy to every home through high-quality
+                            toys, useful household items, and delightful gifts.</p>
+                        <p style="margin-bottom: 2rem; font-size: 1.1rem; color: var(--text-color);">We believe that
+                            shopping should be fun and easy. That's why we've curated a selection of products that are
+                            not only affordable but also durable and safe for your family.</p>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div>
+                                <h3 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.5rem;">5000+
+                                </h3>
+                                <p>Happy Customers</p>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--secondary-color); font-size: 2rem; margin-bottom: 0.5rem;">1000+
+                                </h3>
+                                <p>Products Sold</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>

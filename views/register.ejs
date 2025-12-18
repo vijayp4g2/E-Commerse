@@ -1,0 +1,113 @@
+<%- include('partials/header', { title: 'Register' , page: '' }) %>
+
+    <main>
+        <section style="padding: 5rem 0; min-height: 70vh; display: flex; align-items: center;">
+            <div class="container">
+                <div
+                    style="max-width: 500px; margin: 0 auto; background: white; padding: 3rem; border-radius: 20px; box-shadow: var(--shadow-lg);">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div
+                            style="width: 80px; height: 80px; background: var(--light-bg); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--secondary-color);">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">Create Account</h1>
+                        <p style="color: #666;">Join HappyShop today!</p>
+                    </div>
+
+                    <div id="error-message"
+                        style="display: none; background: #fee; color: #c00; padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem; text-align: center;">
+                    </div>
+
+                    <form id="register-form">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">First
+                                    Name</label>
+                                <input type="text" name="firstName" required
+                                    style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Last
+                                    Name</label>
+                                <input type="text" name="lastName" required
+                                    style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem;">
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+                            <input type="email" name="email" required
+                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem;"
+                                placeholder="your@email.com">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Phone</label>
+                            <input type="tel" name="phone"
+                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem;"
+                                placeholder="+1 234 567 8900">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Password</label>
+                            <input type="password" name="password" required minlength="6"
+                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem;"
+                                placeholder="••••••••">
+                            <small style="color: #666; font-size: 0.85rem;">Minimum 6 characters</small>
+                        </div>
+                        <div style="margin-bottom: 2rem;">
+                            <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" required style="margin-top: 0.25rem;">
+                                <span style="font-size: 0.9rem; color: #666;">I agree to the <a href="#"
+                                        style="color: var(--primary-color);">Terms & Conditions</a> and <a href="#"
+                                        style="color: var(--primary-color);">Privacy Policy</a></span>
+                            </label>
+                        </div>
+                        <button type="submit" class="cta-btn primary"
+                            style="width: 100%; border: none; cursor: pointer; font-size: 1.1rem;">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                    </form>
+
+                    <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #eee;">
+                        <p style="color: #666;">Already have an account? <a href="/login"
+                                style="color: var(--primary-color); font-weight: 600; text-decoration: none;">Login
+                                here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                password: formData.get('password')
+            };
+
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    window.location.href = result.redirect || '/account';
+                } else {
+                    document.getElementById('error-message').textContent = result.error;
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('error-message').textContent = 'An error occurred. Please try again.';
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+    </script>
+
+    <%- include('partials/footer') %>

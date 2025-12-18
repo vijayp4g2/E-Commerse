@@ -1,0 +1,21 @@
+<%- include('partials/header', { title: 'Wishlist' , page: '' }) %>
+
+    <main>
+        <section class="hero" style="background: var(--light-bg); padding: 4rem 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">My Wishlist</h1>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--light-text);">Your saved items</p>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="container">
+                <div class="product-grid" id="wishlist-grid">
+                    <!-- Wishlist items loaded via JS -->
+                    <div style="width: 100%; text-align: center; grid-column: 1/-1;">Loading wishlist...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>

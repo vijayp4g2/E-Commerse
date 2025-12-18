@@ -1,0 +1,157 @@
+<%- include('partials/header', { title: 'Track Order' , page: '' }) %>
+
+    <main>
+        <section class="hero" style="background: var(--light-bg); padding: 4rem 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">Track Your Order</h1>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--light-text);">Enter your order details to track
+                    your shipment</p>
+            </div>
+        </section>
+
+        <section style="padding: 5rem 0;">
+            <div class="container">
+                <div
+                    style="max-width: 600px; margin: 0 auto; background: var(--white); padding: 3rem; border-radius: 20px; box-shadow: var(--shadow-lg);">
+                    <form id="track-order-form">
+                        <div style="margin-bottom: 2rem;">
+                            <label
+                                style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color);">Order
+                                ID</label>
+                            <input type="text" id="order-id" required
+                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; transition: all 0.3s;"
+                                placeholder="e.g., ORD-123456">
+                        </div>
+                        <div style="margin-bottom: 2rem;">
+                            <label
+                                style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color);">Email
+                                Address</label>
+                            <input type="email" id="email" required
+                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; transition: all 0.3s;"
+                                placeholder="your@email.com">
+                        </div>
+                        <button type="submit" class="cta-btn primary"
+                            style="width: 100%; border: none; cursor: pointer; font-size: 1.1rem;">
+                            <i class="fas fa-search"></i> Track Order
+                        </button>
+                    </form>
+
+                    <div id="tracking-result" style="margin-top: 3rem; display: none;">
+                        <div style="border-top: 2px solid #eee; padding-top: 2rem;">
+                            <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">Order Status</h3>
+                            <div class="tracking-timeline">
+                                <div class="timeline-item active">
+                                    <div class="timeline-icon"><i class="fas fa-check"></i></div>
+                                    <div class="timeline-content">
+                                        <h4>Order Placed</h4>
+                                        <p>Your order has been received</p>
+                                        <small>Dec 1, 2024 - 10:30 AM</small>
+                                    </div>
+                                </div>
+                                <div class="timeline-item active">
+                                    <div class="timeline-icon"><i class="fas fa-box"></i></div>
+                                    <div class="timeline-content">
+                                        <h4>Processing</h4>
+                                        <p>We're preparing your items</p>
+                                        <small>Dec 1, 2024 - 2:15 PM</small>
+                                    </div>
+                                </div>
+                                <div class="timeline-item active">
+                                    <div class="timeline-icon"><i class="fas fa-truck"></i></div>
+                                    <div class="timeline-content">
+                                        <h4>Shipped</h4>
+                                        <p>Your order is on the way</p>
+                                        <small>Dec 2, 2024 - 9:00 AM</small>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-icon"><i class="fas fa-home"></i></div>
+                                    <div class="timeline-content">
+                                        <h4>Delivered</h4>
+                                        <p>Estimated delivery</p>
+                                        <small>Dec 4, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .tracking-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 3rem;
+            opacity: 0.5;
+        }
+
+        .timeline-item.active {
+            opacity: 1;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 2rem;
+            width: 2px;
+            height: calc(100% - 2rem);
+            background: #eee;
+        }
+
+        .timeline-item.active::before {
+            background: var(--primary-color);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -0.75rem;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+
+        .timeline-item.active .timeline-icon {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content small {
+            color: #999;
+        }
+    </style>
+
+    <script>
+        document.getElementById('track-order-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate tracking
+            document.getElementById('tracking-result').style.display = 'block';
+            document.getElementById('tracking-result').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+    <%- include('partials/footer') %>

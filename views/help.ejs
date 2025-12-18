@@ -1,0 +1,212 @@
+<%- include('partials/header', { title: 'Help Center' , page: '' }) %>
+
+    <main>
+        <section class="hero"
+            style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 6rem 0; color: white; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">How Can We
+                    Help You?</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 1.5rem auto;">Find answers to common questions or
+                    contact our support team</p>
+                <div style="max-width: 600px; margin: 2rem auto;">
+                    <div style="position: relative;">
+                        <input type="text" placeholder="Search for help..."
+                            style="width: 100%; padding: 1.25rem 3rem 1.25rem 1.5rem; border: none; border-radius: 50px; font-size: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <button
+                            style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; cursor: pointer;">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Help Cards -->
+        <section style="padding: 5rem 0; background: var(--light-bg);">
+            <div class="container">
+                <h2 class="section-title">Quick Help</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <a href="#shipping"
+                        style="background: white; padding: 2rem; border-radius: 15px; text-align: center; text-decoration: none; transition: all 0.3s; box-shadow: var(--shadow-sm);">
+                        <div
+                            style="width: 60px; height: 60px; background: var(--light-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--primary-color); font-size: 1.5rem;">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-color);">Shipping Info</h3>
+                        <p style="color: #666; font-size: 0.9rem;">Delivery times & costs</p>
+                    </a>
+                    <a href="#returns"
+                        style="background: white; padding: 2rem; border-radius: 15px; text-align: center; text-decoration: none; transition: all 0.3s; box-shadow: var(--shadow-sm);">
+                        <div
+                            style="width: 60px; height: 60px; background: var(--light-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--secondary-color); font-size: 1.5rem;">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-color);">Returns</h3>
+                        <p style="color: #666; font-size: 0.9rem;">30-day return policy</p>
+                    </a>
+                    <a href="#payment"
+                        style="background: white; padding: 2rem; border-radius: 15px; text-align: center; text-decoration: none; transition: all 0.3s; box-shadow: var(--shadow-sm);">
+                        <div
+                            style="width: 60px; height: 60px; background: var(--light-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--accent-color); font-size: 1.5rem;">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-color);">Payment</h3>
+                        <p style="color: #666; font-size: 0.9rem;">Secure payment options</p>
+                    </a>
+                    <a href="#account"
+                        style="background: white; padding: 2rem; border-radius: 15px; text-align: center; text-decoration: none; transition: all 0.3s; box-shadow: var(--shadow-sm);">
+                        <div
+                            style="width: 60px; height: 60px; background: var(--light-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #9333ea; font-size: 1.5rem;">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-color);">My Account</h3>
+                        <p style="color: #666; font-size: 0.9rem;">Manage your profile</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section style="padding: 5rem 0;">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div style="max-width: 800px; margin: 3rem auto;">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How long does shipping take?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Standard shipping typically takes 3-5 business days. Express shipping is available for
+                                1-2 day delivery. Free shipping is offered on orders over $50.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is your return policy?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer a 30-day return policy on most items. Products must be unused and in original
+                                packaging. Contact our support team to initiate a return.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you ship internationally?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We ship to over 50 countries worldwide. International shipping times vary by
+                                location, typically 7-14 business days.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How can I track my order?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Once your order ships, you'll receive a tracking number via email. You can also track
+                                your order on our <a href="/track-order" style="color: var(--primary-color);">Track
+                                    Order</a> page.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What payment methods do you accept?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and Apple
+                                Pay for secure checkout.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Support -->
+        <section style="padding: 5rem 0; background: var(--light-bg);">
+            <div class="container" style="text-align: center;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Still Need Help?</h2>
+                <p style="color: #666; font-size: 1.1rem; margin-bottom: 2rem;">Our support team is here to assist you
+                </p>
+                <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/contact" class="cta-btn primary" style="text-decoration: none;">
+                        <i class="fas fa-envelope"></i> Contact Us
+                    </a>
+                    <a href="tel:+12345678900" class="cta-btn white" style="text-decoration: none;">
+                        <i class="fas fa-phone"></i> Call: +1 234 567 8900
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 0 2rem 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+    </style>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
+    <%- include('partials/footer') %>

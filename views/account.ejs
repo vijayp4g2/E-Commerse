@@ -1,0 +1,241 @@
+<%- include('partials/header', { title: 'My Account' , page: '' }) %>
+
+    <main>
+        <section class="hero"
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 4rem 0; color: white; text-align: center;">
+            <div class="container">
+                <div
+                    style="width: 100px; height: 100px; background: white; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #667eea;">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Welcome Back!</h1>
+                <p style="font-size: 1.1rem; opacity: 0.9;">Manage your account and orders</p>
+            </div>
+        </section>
+
+        <section style="padding: 5rem 0;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 250px 1fr; gap: 3rem;">
+                    <!-- Sidebar -->
+                    <div>
+                        <div
+                            style="background: white; border-radius: 15px; padding: 1.5rem; box-shadow: var(--shadow-md);">
+                            <nav class="account-nav">
+                                <a href="#profile" class="nav-item active">
+                                    <i class="fas fa-user"></i>
+                                    <span>Profile</span>
+                                </a>
+                                <a href="#orders" class="nav-item">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>My Orders</span>
+                                </a>
+                                <a href="#addresses" class="nav-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Addresses</span>
+                                </a>
+                                <a href="#payment" class="nav-item">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Payment Methods</span>
+                                </a>
+                                <a href="#security" class="nav-item">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Security</span>
+                                </a>
+                                <a href="#" class="nav-item"
+                                    style="color: #ef4444; border-top: 1px solid #eee; margin-top: 1rem; padding-top: 1rem;">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div>
+                        <!-- Profile Section -->
+                        <div class="account-section active" id="profile-section">
+                            <div
+                                style="background: white; border-radius: 15px; padding: 2.5rem; box-shadow: var(--shadow-md);">
+                                <h2 style="margin-bottom: 2rem; font-size: 1.8rem;">Personal Information</h2>
+                                <form>
+                                    <div
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                        <div>
+                                            <label
+                                                style="display: block; margin-bottom: 0.5rem; font-weight: 500;">First
+                                                Name</label>
+                                            <input type="text" value="John"
+                                                style="width: 100%; padding: 0.875rem; border: 2px solid #eee; border-radius: 10px;">
+                                        </div>
+                                        <div>
+                                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Last
+                                                Name</label>
+                                            <input type="text" value="Doe"
+                                                style="width: 100%; padding: 0.875rem; border: 2px solid #eee; border-radius: 10px;">
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 1.5rem;">
+                                        <label
+                                            style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+                                        <input type="email" value="john.doe@example.com"
+                                            style="width: 100%; padding: 0.875rem; border: 2px solid #eee; border-radius: 10px;">
+                                    </div>
+                                    <div style="margin-bottom: 1.5rem;">
+                                        <label
+                                            style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Phone</label>
+                                        <input type="tel" value="+1 234 567 8900"
+                                            style="width: 100%; padding: 0.875rem; border: 2px solid #eee; border-radius: 10px;">
+                                    </div>
+                                    <button type="submit" class="cta-btn primary"
+                                        style="border: none; cursor: pointer;">
+                                        Save Changes
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Orders Section -->
+                        <div class="account-section" id="orders-section" style="display: none;">
+                            <div
+                                style="background: white; border-radius: 15px; padding: 2.5rem; box-shadow: var(--shadow-md);">
+                                <h2 style="margin-bottom: 2rem; font-size: 1.8rem;">Order History</h2>
+
+                                <div class="order-card">
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem;">
+                                        <div>
+                                            <h3 style="margin-bottom: 0.5rem;">Order #ORD-123456</h3>
+                                            <p style="color: #666; font-size: 0.9rem;">Placed on Dec 1, 2024</p>
+                                        </div>
+                                        <span
+                                            style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">Delivered</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; gap: 1rem; padding: 1rem; background: var(--light-bg); border-radius: 10px; margin-bottom: 1rem;">
+                                        <img src="https://images.unsplash.com/photo-1587654780291-39c940483719?auto=format&fit=crop&w=100&q=60"
+                                            style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+                                        <div style="flex: 1;">
+                                            <h4 style="margin-bottom: 0.25rem;">Colorful Building Blocks</h4>
+                                            <p style="color: #666; font-size: 0.9rem;">Quantity: 1</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <p
+                                                style="font-weight: 600; font-size: 1.1rem; color: var(--primary-color);">
+                                                $25.00</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 1rem;">
+                                        <a href="/track-order" class="cta-btn white"
+                                            style="text-decoration: none; flex: 1; text-align: center;">Track Order</a>
+                                        <button class="cta-btn primary"
+                                            style="border: none; cursor: pointer; flex: 1;">Buy Again</button>
+                                    </div>
+                                </div>
+
+                                <div class="order-card">
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem;">
+                                        <div>
+                                            <h3 style="margin-bottom: 0.5rem;">Order #ORD-123455</h3>
+                                            <p style="color: #666; font-size: 0.9rem;">Placed on Nov 28, 2024</p>
+                                        </div>
+                                        <span
+                                            style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">In
+                                            Transit</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; gap: 1rem; padding: 1rem; background: var(--light-bg); border-radius: 10px; margin-bottom: 1rem;">
+                                        <img src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=100&q=60"
+                                            style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+                                        <div style="flex: 1;">
+                                            <h4 style="margin-bottom: 0.25rem;">Remote Control Car</h4>
+                                            <p style="color: #666; font-size: 0.9rem;">Quantity: 1</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <p
+                                                style="font-weight: 600; font-size: 1.1rem; color: var(--primary-color);">
+                                                $55.00</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 1rem;">
+                                        <a href="/track-order" class="cta-btn primary"
+                                            style="text-decoration: none; flex: 1; text-align: center; border: none;">Track
+                                            Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .account-nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .account-nav .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+            margin-bottom: 0.5rem;
+        }
+
+        .account-nav .nav-item:hover {
+            background: var(--light-bg);
+        }
+
+        .account-nav .nav-item.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .account-nav .nav-item i {
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .order-card {
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .order-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+
+    <script>
+        document.querySelectorAll('.account-nav .nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (item.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelectorAll('.account-nav .nav-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Show corresponding section (simplified for demo)
+                    const section = item.getAttribute('href').replace('#', '');
+                    document.querySelectorAll('.account-section').forEach(s => s.style.display = 'none');
+                    if (section === 'profile') {
+                        document.getElementById('profile-section').style.display = 'block';
+                    } else if (section === 'orders') {
+                        document.getElementById('orders-section').style.display = 'block';
+                    }
+                }
+            });
+        });
+    </script>
+
+    <%- include('partials/footer') %>

@@ -1,0 +1,40 @@
+<%- include('partials/header', { title: category, page: category.toLowerCase() }) %>
+
+    <main>
+        <section class="hero"
+            style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= heroImage %>'); background-size: cover; background-position: center; padding: 6rem 0; color: white; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                    <%= heroTitle %>
+                </h1>
+                <p
+                    style="font-size: 1.2rem; max-width: 600px; margin: 1rem auto; text-shadow: 0 1px 5px rgba(0,0,0,0.3);">
+                    <%= heroDescription %>
+                </p>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">All <%= category %>
+                    </h2>
+                    <div class="filter-tabs">
+                        <button class="active">All</button>
+                        <% filterOptions.forEach(option=> { %>
+                            <button>
+                                <%= option %>
+                            </button>
+                            <% }) %>
+                    </div>
+                </div>
+                <div class="product-grid" id="category-grid" data-category="<%= category %>">
+                    <!-- Products loaded via JS -->
+                    <div style="width: 100%; text-align: center; grid-column: 1/-1;">Loading <%= category.toLowerCase()
+                            %>...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>

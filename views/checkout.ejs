@@ -1,0 +1,113 @@
+<%- include('partials/header', { title: 'Checkout' , page: '' }) %>
+
+    <main>
+        <section class="hero" style="background: var(--light-bg); padding: 4rem 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">Checkout</h1>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--light-text);">Complete your order</p>
+            </div>
+        </section>
+
+        <section style="padding: 5rem 0;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+                    <!-- Checkout Form -->
+                    <div
+                        style="background: var(--white); padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow-md);">
+                        <h2 style="margin-bottom: 2rem;">Billing Details</h2>
+                        <form id="checkout-form">
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Full
+                                    Name</label>
+                                <input type="text" name="fullName" required
+                                    style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 10px;">
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+                                <input type="email" name="email" required
+                                    style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 10px;">
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Address</label>
+                                <textarea name="address" required
+                                    style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 10px; min-height: 100px;"></textarea>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Phone</label>
+                                <input type="tel" name="phone" required
+                                    style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 10px;">
+                            </div>
+                            <button type="submit" class="cta-btn primary"
+                                style="width: 100%; border: none; cursor: pointer;">
+                                <i class="fas fa-check-circle"></i> Place Order
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div style="background: var(--light-bg); padding: 2.5rem; border-radius: 20px;">
+                        <h2 style="margin-bottom: 2rem;">Order Summary</h2>
+                        <div id="checkout-items">
+                            <!-- Items loaded via JS -->
+                        </div>
+                        <div style="border-top: 2px solid #ddd; margin-top: 2rem; padding-top: 2rem;">
+                            <div
+                                style="display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: 600;">
+                                <span>Total:</span>
+                                <span id="checkout-total" style="color: var(--primary-color);">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                window.location.href = '/';
+                return;
+            }
+
+            const formData = new FormData(e.target);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            const orderData = {
+                items: cart,
+                total: total,
+                shippingAddress: {
+                    fullName: formData.get('fullName'),
+                    email: formData.get('email'),
+                    address: formData.get('address'),
+                    phone: formData.get('phone')
+                }
+            };
+
+            try {
+                const response = await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    localStorage.removeItem('cart');
+                    alert(`Order placed successfully! Your order number is: ${result.orderNumber}`);
+                    window.location.href = '/track-order?order=' + result.orderNumber;
+                } else {
+                    alert('Error placing order: ' + result.error);
+                }
+            } catch (error) {
+                alert('Error placing order. Please try again.');
+            }
+        });
+    </script>
+
+    <%- include('partials/footer') %>

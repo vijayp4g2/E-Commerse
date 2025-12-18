@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %> - HappyShop
+    </title>
+    <meta name="description"
+        content="HappyShop - Your one-stop destination for toys, gifts, stationery, and more. Quality products, fast shipping, and excellent customer service.">
+    <meta name="keywords" content="ecommerce, toys, gifts, stationery, plastic goods, shopping, online store">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span><i class="fas fa-truck"></i> Free Shipping on Orders Over $50</span>
+                <div class="top-links">
+                    <a href="/track-order">Track Order</a>
+                    <a href="/help">Help</a>
+                    <span><i class="fas fa-phone"></i> +1 234 567 8900</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+
+                <a href="/" class="logo">
+                    <i class="fas fa-shapes"></i>
+                    Happy<span>Shop</span>
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for toys, gifts...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="nav-icons">
+                    <a href="/wishlist" class="icon-btn"><i class="far fa-heart"></i> <span
+                            class="badge wishlist-count">0</span></a>
+                    <button class="icon-btn cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <% if (typeof user !=='undefined' && user) { %>
+                        <div style="position: relative; display: inline-block;">
+                            <a href="/account" class="icon-btn"
+                                style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--light-bg); border-radius: 50px;">
+                                <i class="fas fa-user-circle"></i>
+                                <span style="font-size: 0.9rem;">
+                                    <%= user.firstName %>
+                                </span>
+                            </a>
+                        </div>
+                        <% } else { %>
+                            <a href="/login" class="icon-btn"><i class="far fa-user"></i></a>
+                            <% } %>
+                </div>
+            </nav>
+
+            <!-- Main Menu -->
+            <ul class="nav-links">
+                <li><a href="/" class="<%= page === 'home' ? 'active' : '' %>">Home</a></li>
+                <li><a href="/toys" class="<%= page === 'toys' ? 'active' : '' %>">Toys</a></li>
+                <li><a href="/gifts" class="<%= page === 'gifts' ? 'active' : '' %>">Gifts</a></li>
+                <li><a href="/stationery" class="<%= page === 'stationery' ? 'active' : '' %>">Stationery</a></li>
+                <li><a href="/plastic" class="<%= page === 'plastic' ? 'active' : '' %>">Plastic Goods</a></li>
+                <li><a href="/#deals" style="color: var(--secondary-color);">Deals</a></li>
+            </ul>
+        </div>
+    </header>

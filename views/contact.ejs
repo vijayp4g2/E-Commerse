@@ -1,0 +1,105 @@
+<%- include('partials/header', { title: 'Contact Us' , page: '' }) %>
+
+    <main>
+        <section class="hero" style="background: var(--light-bg); padding: 4rem 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">Get in Touch</h1>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--light-text);">We'd love to hear from you. Send
+                    us a message!</p>
+            </div>
+        </section>
+
+        <section class="contact-content" style="padding: 5rem 0;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+                    <!-- Contact Info -->
+                    <div>
+                        <h2 style="margin-bottom: 2rem;">Contact Information</h2>
+                        <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                            <div
+                                style="width: 50px; height: 50px; background: var(--light-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-size: 1.2rem;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Visit Us</h3>
+                                <p style="color: #666;">123 Happy Street, Joy City, JC 12345</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                            <div
+                                style="width: 50px; height: 50px; background: var(--light-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary-color); font-size: 1.2rem;">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Call Us</h3>
+                                <p style="color: #666;">+1 234 567 8900</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1.5rem;">
+                            <div
+                                style="width: 50px; height: 50px; background: var(--light-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); font-size: 1.2rem;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email Us</h3>
+                                <p style="color: #666;">support@happyshop.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div
+                        style="background: var(--white); padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow-md); border: 1px solid #eee;">
+                        <h3 style="margin-bottom: 1.5rem;">Send Message</h3>
+                        <form id="contact-form">
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Name</label>
+                                <input type="text" id="name"
+                                    style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 10px; outline: none;"
+                                    placeholder="Your Name" required>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+                                <input type="email" id="email"
+                                    style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 10px; outline: none;"
+                                    placeholder="Your Email" required>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Message</label>
+                                <textarea id="message"
+                                    style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 10px; min-height: 150px; outline: none;"
+                                    placeholder="How can we help?" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-btn primary"
+                                style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Contact form handler
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+                const result = await response.json();
+                alert(result.message);
+                e.target.reset();
+            } catch (error) {
+                alert('Error sending message. Please try again.');
+            }
+        });
+    </script>
+
+    <%- include('partials/footer') %>
