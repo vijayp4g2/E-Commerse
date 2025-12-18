@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Middleware
 app.use(cors());
@@ -40,12 +40,13 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Database Setup
-const db = new sqlite3.Database('./ecommerce.db', (err) => {
+const dbPath = path.join(__dirname, "ecommerce.db");
+
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
-        console.error('Error opening database', err.message);
-        process.exit(1); // Exit if DB fails
+        console.error("Database connection error:", err.message);
     } else {
-        console.log('Connected to the SQLite database.');
+        console.log("Connected to SQLite database");
         initDatabase();
     }
 });
@@ -526,9 +527,6 @@ app.post('/api/newsletter', (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-    console.log(`✨ Full-Stack E-Commerce Server running on http://localhost:${PORT}`);
-    console.log(`📦 Database: SQLite (ecommerce.db)`);
-    console.log(`🔐 Session-based authentication enabled`);
-    console.log(`🛒 Features: Products, Orders, Users, Wishlist, Contact`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
 });
