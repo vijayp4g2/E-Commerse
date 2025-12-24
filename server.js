@@ -299,7 +299,12 @@ app.post('/api/newsletter', (req, res) => {
     res.json({ message: 'Successfully subscribed to newsletter!' });
 });
 
-// Start Server
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Export the app for Netlify Functions
+module.exports = app;
+
+// Start Server strictly if this file is run directly
+if (require.main === module) {
+    app.listen(PORT, "0.0.0.0", () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
