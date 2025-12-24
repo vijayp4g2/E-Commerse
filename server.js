@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
+const ejs = require('ejs'); // Explicitly require ejs for Netlify bundler
 require('dotenv').config();
 
 const app = express();

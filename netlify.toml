@@ -10,3 +10,6 @@
   from = "/*"
   to = "/.netlify/functions/api"
   status = 200
+
+[functions]
+  included_files = ["views/**/*.ejs", "public/**/*"]
